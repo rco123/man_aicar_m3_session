@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rco123.github.io/man_ai_car_m3_lab_session/ch04/det/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>4.4 이미지 디텍션 - 인공지능자율주행자동차과정</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra_css/style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "4.4 \uc774\ubbf8\uc9c0 \ub514\ud14d\uc158";
+        var mkdocs_page_input_path = "ch04\\det.md";
+        var mkdocs_page_url = "/man_ai_car_m3_lab_session/ch04/det/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> 인공지능자율주행자동차과정
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">1.인공지능 학습 프로그램</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch01/car_con_pgm/">1.1 자동차제어프로그램</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch01/iblock/">1.2 iBlock 프로그램</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch01/ipsetting/">1.3 자동차 IP 설정</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">2. 자동차 자율주행</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch02/images/">2.1 도로이미지 수집</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch02/roadview/">2.2 도로이미지 처리</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch02/train/">2.3 도로이미지 학습</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch02/drvx/">2.4 인공지능 자율주행</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">3. 이미지분류(마크)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch03/images/">3.1 이미지수집</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch03/train/">3.2 데이터 학습</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch03/det/">3.3 이미지 디텍션</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">4. 방향지시 디텍션</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../images/">4.1 이미지 수집</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data/">4.2 데이터 준비</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../train/">4.3 데이터 학습</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">4.4 이미지 디텍션</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">추론과정 진행</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">5. 신호등</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch05/images/">5.1 이미지 수집</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch05/data/">5.2 데이터 준비</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch05/train/">5.3 데이터 학습</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch05/led_model/">5.4 색상 모델생성</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch05/det/">5.5 신호등 디텍션</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch05/det_led/">5.6 신호등 색상 구분</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">6. 교통표지판</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch06/images/">6.1 표지판 이미지 수집</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch06/data/">6.2 표지판 데이터 준비</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch06/train/">6.3 표지판 데이터 학습</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch06/data_sign/">6.4 신호 데이터 준비</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch06/train_sign/">6.5 신호 이미지 학습</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ch06/det/">6.6 교통표지판 디텍션</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">인공지능자율주행자동차과정</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">4. 방향지시 디텍션</li>
+      <li class="breadcrumb-item active">4.4 이미지 디텍션</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="_1">이미지 디텍션</h2>
+<p>이미지를 분류하는 프로그램을 수행하여 해당 이미지를 카메라로 영상이 입력되는 경우, 해당 이미지에 대한 디렉토리 이름을 출력한다.</p>
+<h4 id="_2">추론과정 진행</h4>
+<p>CODE -&gt; dir-&gt; 02.det.xml </p>
+<p>를 수행하여 카메라로 부터 이지지가 들어오면 해당 이미지에 대한 디렉토리 이름을 출력하는지 확인한다.</p>
+<p><center>
+<img  src="../../ch04/imgs/det01.png"  width="600"  height="400" /> 
+</center></p>
+<div style="height:40px"></div>
+
+<p><center>
+<img  src="../../ch04/imgs/det02.png"  width="600"  height="400" /> 
+</center></p>
+<div style="height:40px"></div>
+
+<div class="highlight"><pre><span></span><code>링크 : https://youtu.be/-5iWk3q5OAs
+</code></pre></div>
+<p><center>
+<br />
+<iframe 
+    width="600" 
+    height="400" 
+    src="https://www.youtube.com/embed/-5iWk3q5OAs" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe></p>
+<p></center></p>
+<div style="height:40px"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../train/" class="btn btn-neutral float-left" title="4.3 데이터 학습"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../ch05/images/" class="btn btn-neutral float-right" title="5.1 이미지 수집">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../train/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../ch05/images/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
